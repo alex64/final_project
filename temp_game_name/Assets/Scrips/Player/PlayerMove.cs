@@ -10,8 +10,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] 
     private Animator playerAnimator;
 
-    private bool isMoving = false;
-
     private Dictionary<KeyCode, Vector3> movementList = new Dictionary<KeyCode, Vector3>();
     private Queue moveQueue = new Queue();
 
@@ -27,23 +25,26 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsAnimation("");
         foreach(KeyValuePair<KeyCode, Vector3> movement in movementList) 
         {
             if(Input.GetKeyDown(movement.Key)) 
             {
+
                 playerAnimator.SetTrigger("Moving_Trigger");
             }
             if(Input.GetKeyUp(movement.Key))
             {
+                //playerAnimator.SetTrigger("Idle_Trigger");
                 if (!IsAnimation("Idle_Trigger"))
-                //if(moveQueue.Count == 0)
                 {
                     playerAnimator.SetTrigger("Idle_Trigger");
                 }
             }
             if(Input.GetKey(movement.Key))
             {
-                /*if(!IsAnimation("Moving_Trigger")) {
+                /*if(!IsAnimation("Moving_Trigger"))
+                {
                     playerAnimator.SetTrigger("Moving_Trigger");
                 }*/
                 RotatePlayer(movement.Value);

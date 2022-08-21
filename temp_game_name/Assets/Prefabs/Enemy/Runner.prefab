@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &487232612645758399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3285430020925778592}
+  - component: {fileID: 7406669613621066262}
+  - component: {fileID: 1978775287200311510}
+  - component: {fileID: 4463505333711121450}
+  m_Layer: 0
+  m_Name: Runner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3285430020925778592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487232612645758399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5707568006203713320}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7406669613621066262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487232612645758399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb11d090f4b19ff4b9aefc501fac942c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  runDelay: 2
+  minMovRange: -50
+  maxMovRange: 50
+  enemyAnimator: {fileID: 6743600012956212296}
+  playerTransform: {fileID: 0}
+  enemyType: 1
+--- !u!54 &1978775287200311510
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487232612645758399}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!135 &4463505333711121450
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487232612645758399}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.55
+  m_Center: {x: 0, y: 0.45, z: 0}
+--- !u!1001 &976721355090073357
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3285430020925778592}
+    m_Modifications:
+    - target: {fileID: 1680762944565903685, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_Name
+      value: RunnerAvatar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+--- !u!1 &1935780500657608264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1680762944565903685, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+  m_PrefabInstance: {fileID: 976721355090073357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6743600012956212296
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935780500657608264}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 1f499d0eded7a4245b0c36149a43da4f, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7afa49f216430af42ad133acb10ff914, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &5707568006203713320 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4808534030385852453, guid: 5b50ab58ab3411d4bb63f8cabf461591, type: 3}
+  m_PrefabInstance: {fileID: 976721355090073357}
+  m_PrefabAsset: {fileID: 0}
