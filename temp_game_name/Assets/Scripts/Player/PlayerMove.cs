@@ -11,47 +11,53 @@ public class PlayerMove : MonoBehaviour
     private Animator playerAnimator;
 
     private Dictionary<KeyCode, Vector3> movementList = new Dictionary<KeyCode, Vector3>();
-    private Queue moveQueue = new Queue();
 
     // Start is called before the first frame update
     void Start()
     {
         movementList.Add(KeyCode.W, Vector3.forward);
-        movementList.Add(KeyCode.S, Vector3.back);
         movementList.Add(KeyCode.A, Vector3.left);
+        movementList.Add(KeyCode.S, Vector3.back);
         movementList.Add(KeyCode.D, Vector3.right);
     }
 
     // Update is called once per frame
     void Update()
     {
-        IsAnimation("");
+        bool triggerIdle = false;
+        bool isMoving = false;
         foreach(KeyValuePair<KeyCode, Vector3> movement in movementList) 
         {
             if(Input.GetKeyDown(movement.Key)) 
             {
-
-                playerAnimator.SetTrigger("Moving_Trigger");
+                isMoving = true;
+                TriggerAnimation("Moving_Trigger");
+                int rotateDirection = movement.Value.Equals(Vector3.left)?-1:movement.Value.Equals(Vector3.right)?1:0;
+                RotatePlayer(rotateDirection);
             }
             if(Input.GetKeyUp(movement.Key))
             {
-                //playerAnimator.SetTrigger("Idle_Trigger");
-                if (!IsAnimation("Idle_Trigger"))
+                triggerIdle = true;
+            }
+            if(Input.GetKey(movement.Key)) 
+            {
+                isMoving = true;
+                bool movementDirection = movement.Value.Equals(Vector3.back)||movement.Value.Equals(Vector3.forward)?true:false;
+                if(movementDirection) 
                 {
-                    playerAnimator.SetTrigger("Idle_Trigger");
+                    Movement(movement.Value);
                 }
             }
-            if(Input.GetKey(movement.Key))
-            {
-                /*if(!IsAnimation("Moving_Trigger"))
-                {
-                    playerAnimator.SetTrigger("Moving_Trigger");
-                }*/
-                RotatePlayer(movement.Value);
-                Movement(Vector3.forward);
-            }
-            
         }
+        if (!IsAnimation("Idle_Trigger") && triggerIdle && !isMoving)
+        {
+            TriggerAnimation("Idle_Trigger");
+        }
+    }
+
+    private void TriggerAnimation(string animationName)
+    {
+        playerAnimator.SetTrigger(animationName);
     }
 
     private void Movement(Vector3 direction)
@@ -59,10 +65,16 @@ public class PlayerMove : MonoBehaviour
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
-    public void RotatePlayer(Vector3 direction)
+    private void RotatePlayer(int rotateDirection) 
+    {
+        transform.eulerAngles += Vector3.up * rotateDirection * 90f;
+    }
+
+    private void RotatePlayer(Vector3 direction)
     {
         Quaternion newRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, 2f * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, 100f * Time.deltaTime);
+        
     }
 
     private bool IsAnimation(string animName)

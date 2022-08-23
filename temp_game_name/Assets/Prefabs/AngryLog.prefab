@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8613078384411301758}
   - component: {fileID: 4845170699522929359}
   - component: {fileID: 349215620359249317}
+  - component: {fileID: -8538677554403357826}
   m_Layer: 0
   m_Name: AngryLog
   m_TagString: Untagged
@@ -49,7 +50,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &4845170699522929359
 BoxCollider:
@@ -76,6 +77,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e9586909e465f47afed0295a454f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8538677554403357826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381912527235622192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb11d090f4b19ff4b9aefc501fac942c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  runDelay: 2
+  minMovRange: -50
+  maxMovRange: 50
+  enemyAnimator: {fileID: 0}
+  playerTransform: {fileID: 5627234484057646583, guid: 0e5ba6d31cd13eb4c960a82dad5b1be0, type: 3}
+  enemyType: 2
 --- !u!1001 &2660217899824217831
 PrefabInstance:
   m_ObjectHideFlags: 0

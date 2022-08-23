@@ -46,7 +46,10 @@ public class EnemyMove : MonoBehaviour
                 enemyAnimator.SetTrigger("movingTriggerRunner");
                 break;
             case EnemyType.Stalker:
-                enemyAnimator.SetTrigger("movingTriggerRunner");
+                if(enemyAnimator!= null) {
+                    enemyAnimator.SetTrigger("movingTriggerRunner");
+                }
+                
                 break;
         }
     }
