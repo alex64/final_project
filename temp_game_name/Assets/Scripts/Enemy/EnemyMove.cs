@@ -37,6 +37,8 @@ public class EnemyMove : MonoBehaviour
 
     [SerializeField] EnemyType enemyType;
 
+    public Transform PlayerTransform { get => playerTransform; set => playerTransform = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -129,13 +131,13 @@ public class EnemyMove : MonoBehaviour
     private void ChasePlayer(bool isChasePlayer) 
     {
         LookPlayer(isChasePlayer);
-        Vector3 chaseDirection = playerTransform.position - transform.position;
+        Vector3 chaseDirection = PlayerTransform.position - transform.position;
         transform.position += chaseDirection.normalized * (isChasePlayer?1:-1) * speed * Time.deltaTime; 
     }
 
     private void LookPlayer(bool isChasePlayer)
     {
-        Quaternion newRotation = isChasePlayer?Quaternion.LookRotation(playerTransform.position - transform.position):Quaternion.LookRotation(transform.position - playerTransform.position);
+        Quaternion newRotation = isChasePlayer?Quaternion.LookRotation(PlayerTransform.position - transform.position):Quaternion.LookRotation(transform.position - PlayerTransform.position);
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, 2f * Time.deltaTime);
     }
 
