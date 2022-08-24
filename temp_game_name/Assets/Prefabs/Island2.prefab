@@ -281,6 +281,10 @@ PrefabInstance:
       propertyPath: finisObject
       value: 
       objectReference: {fileID: 344671000714731781, guid: e439bdac1a3cd7842b6b5fdad33bf1db, type: 3}
+    - target: {fileID: 2739971364478356168, guid: fee0cbdbf65966443954751c1b58014a, type: 3}
+      propertyPath: finishObject
+      value: 
+      objectReference: {fileID: 344671000714731781, guid: e439bdac1a3cd7842b6b5fdad33bf1db, type: 3}
     - target: {fileID: 7810663499808114645, guid: fee0cbdbf65966443954751c1b58014a, type: 3}
       propertyPath: m_Name
       value: EndItem1
@@ -424,6 +428,14 @@ PrefabInstance:
     - target: {fileID: 4000010010723404, guid: 7701c380fe891d245865ac1d11ca2282, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112621054238304074, guid: 7701c380fe891d245865ac1d11ca2282, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0128859
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112621054238304074, guid: 7701c380fe891d245865ac1d11ca2282, type: 3}
+      propertyPath: m_Center.y
+      value: -0.4935574
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7701c380fe891d245865ac1d11ca2282, type: 3}
