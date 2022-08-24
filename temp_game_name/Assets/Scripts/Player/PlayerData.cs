@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    private bool hasMagicItem = true;//false;
+    private bool hasMagicItem = false;
     private bool collideWithTree = false;
     
     public bool CollideWithTree { get => collideWithTree; set => collideWithTree = value; }

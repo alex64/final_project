@@ -7,72 +7,123 @@ public class TreeManager : MonoBehaviour
     [SerializeField]
     private GameObject lightingRod;
     [SerializeField]
-    [Range(0.1f, 0.5f)]
-    private float zPosition = 0.3f;
+    [Range(0f, -1f)]
+    private float zPosition = -0.3f;
+
+    [SerializeField]
+    [Range(1f, 2f)]
+    private float treeActionsDelay = 2f;
     
 
     [SerializeField] private GameObject treeLog;
+    [SerializeField] private GameObject normalTree;
     [SerializeField] private GameObject bridge;
 
     private bool isGrown = false;
     private bool isDestroyed = false;
     private bool isBridgeCreated = false;
     private bool hasLightingRod = false;
+    private bool isTreeRotation = false;
+    private bool triggerDeleteRotationTree = false;
 
     public bool IsGrown { get => isGrown; set => isGrown = value; }
     public bool IsDestroyed { get => isDestroyed; set => isDestroyed = value; }
     public bool IsBridgeCreated { get => isBridgeCreated; set => isBridgeCreated = value; }
     public bool HasLightingRod { get => hasLightingRod; set => hasLightingRod = value; }
 
+    private void Update() {
+        if(isTreeRotation) 
+        {
+            TreeRotation();
+            if(!triggerDeleteRotationTree) 
+            {
+                Invoke("DestroyTreeAction", treeActionsDelay);
+                triggerDeleteRotationTree = true;
+            }
+        }
+        
+    }
+
     public void GrowTree(){
-        transform.position += new Vector3(0f, 3.5f, 0f);
+        if(isDestroyed) 
+        {
+            Invoke("DestroyTreeAction", treeActionsDelay);
+            Invoke("InstantiateTreeAction", treeActionsDelay);
+        }
+        else 
+        {
+            changeTree();
+        }
+        
+    }
+
+    private void changeTree()
+    {
+        Debug.Log("Change Treee");
+        transform.position += new Vector3(0f, 0.7f, 0f);
         transform.localScale = transform.localScale * 2;
         isGrown = true;
         isDestroyed = false;
     }
 
     public void DestroyTree(){
+        Debug.Log("Destroy");
         isGrown = false;
         isDestroyed = true;
-        Invoke("DestroyTreeAction", 2f);
-        Invoke("InstantiateTreeLogAction", 2f);
+        Invoke("DestroyTreeAction", treeActionsDelay);
+        Invoke("InstantiateTreeLogAction", treeActionsDelay);
     }
 
     private void DestroyTreeAction(){
         GameObject fallingTree = gameObject.transform.GetChild(0).gameObject;
         Destroy(fallingTree);
+        if(isBridgeCreated) 
+        {
+            isTreeRotation = false;
+            InstantiateBridgeAction();
+        }
+    }
+
+    private void InstantiateTreeAction(){
+        GameObject newTree = Instantiate(normalTree, transform.position + new Vector3(0, 3f, 0), transform.rotation);
+        newTree.transform.parent = gameObject.transform;
+        changeTree();
     }
 
     private void InstantiateTreeLogAction(){
-        Instantiate(treeLog, transform.position + new Vector3(0, -3.5f, 0), transform.rotation);
+        GameObject newTree = Instantiate(treeLog, transform.position + new Vector3(0, -0.7f, 0), transform.rotation);
+        newTree.transform.parent = gameObject.transform;
     }
 
-    public void CreateBridge(){
-        Invoke("TreeRotation", 2f);
-        Invoke("DestroyTreeAction", 0f);
-        Invoke("InstantiateBridgeAction", 1f);
+    public void CreateBridge()
+    {
+        if(gameObject.transform.GetChild(1) != null)
+        {
+            Destroy(gameObject.transform.GetChild(1).gameObject);
+        }
         isBridgeCreated = true;
+        isTreeRotation = true;
     }
 
     private void TreeRotation(){
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(90, 0, 0), 2f * Time.deltaTime);
+        Quaternion lookRotation = Quaternion.LookRotation(Vector3.down);
+        GameObject pivot = gameObject.transform.GetChild(0).transform.GetChild(0).gameObject;
+        pivot.transform.rotation = Quaternion.Lerp(pivot.transform.rotation, lookRotation, 1.5f * Time.deltaTime);
     }
 
     private void InstantiateBridgeAction(){
-        Instantiate(bridge, transform);
+        bridge.SetActive(true);
     }
 
     public void AddLightingRod()
     {
-        //Add Model
         hasLightingRod = true;
         Invoke("CreateLightinRodModel", 1f);
     }
 
     private void CreateLightinRodModel()
     {
-        Debug.Log("Creating item");
-        GameObject lr = Instantiate(lightingRod, new Vector3(transform.position.x, 1, transform.position.z + zPosition), transform.rotation);
+        GameObject lr = Instantiate(lightingRod, new Vector3(transform.position.x, 1, transform.position.z + zPosition), Quaternion.Euler(0, 180, 0));
         lr.transform.parent = gameObject.transform;
     }
 }

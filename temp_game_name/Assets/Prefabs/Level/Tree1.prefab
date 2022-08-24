@@ -62,6 +62,7 @@ MonoBehaviour:
   lightingRod: {fileID: 0}
   zPosition: 0.3
   treeLog: {fileID: 0}
+  normalTree: {fileID: 0}
   bridge: {fileID: 0}
 --- !u!1 &8163618851007138505
 GameObject:

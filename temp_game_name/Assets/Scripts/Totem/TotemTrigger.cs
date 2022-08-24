@@ -22,20 +22,38 @@ public class TotemTrigger : MonoBehaviour
         if(other.gameObject.CompareTag("Player")){
             time += Time.deltaTime;
             if(time >= timeInTotem){
+                Debug.Log("Time");
                 switch(totemType){
                     case TotemType.Rain:
-                        if(treeManager.IsDestroyed || !treeManager.IsGrown) { //|| !treeManager.IsBridgeCreated){
+                        //Set Ligt Blue
+                        if(treeManager.IsDestroyed || !treeManager.IsGrown) 
+                        {
                             treeManager.GrowTree();
+                            time = 0;
                         }
                         break;
                     case TotemType.Thunder:
+                        Debug.Log("Thunder");
+                        //Set Ligt Yellow
                         if(!treeManager.IsGrown && !treeManager.IsDestroyed) 
                         {
                             treeManager.DestroyTree();
+                            time = 0;
+                        }
+                        if(treeManager.IsGrown && treeManager.HasLightingRod && !treeManager.IsBridgeCreated) 
+                        {
+                            Debug.Log("Create Bridge");
+                            treeManager.CreateBridge();
+                            time = 0;
                         }
                         break;
                 }
             }
         }
+    }
+
+    private void SetLights() 
+    {
+
     }
 }
