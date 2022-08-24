@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1366925256053106150}
   - component: {fileID: 8569421315135938994}
+  - component: {fileID: 403603095168963339}
   m_Layer: 0
   m_Name: Tree1
   m_TagString: FallingTree
@@ -46,6 +47,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0995275, y: 4.25273, z: 1}
   m_Center: {x: -0.04976374, y: -1.626365, z: 0}
+--- !u!114 &403603095168963339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753075335134721966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b218ef38c41659047849e3263f551e3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightingRod: {fileID: 0}
+  zPosition: 0.3
+  treeLog: {fileID: 0}
+  bridge: {fileID: 0}
 --- !u!1 &8163618851007138505
 GameObject:
   m_ObjectHideFlags: 0

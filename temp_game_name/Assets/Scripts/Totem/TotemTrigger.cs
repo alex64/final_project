@@ -11,11 +11,8 @@ public class TotemTrigger : MonoBehaviour
     enum TotemType {Rain, Thunder};
     private float time = 0f;
 
-    private void Start() {
-        treeManager.GrowTree();
-    }
-
     private void OnTriggerEnter(Collider other) {
+        Debug.Log("TEst");
         if(other.gameObject.CompareTag("Player")){
             time = 0f;
         }
@@ -23,14 +20,20 @@ public class TotemTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other) {
         if(other.gameObject.CompareTag("Player")){
-            if(time == timeInTotem){
+            time += Time.deltaTime;
+            if(time >= timeInTotem){
                 switch(totemType){
                     case TotemType.Rain:
-                        if(treeManager.IsDestroyed && (!treeManager.IsGrown || !treeManager.IsBridgeCreated)){
+                        if(treeManager.IsDestroyed || !treeManager.IsGrown) { //|| !treeManager.IsBridgeCreated){
                             treeManager.GrowTree();
                         }
                         break;
-                        
+                    case TotemType.Thunder:
+                        if(!treeManager.IsGrown && !treeManager.IsDestroyed) 
+                        {
+                            treeManager.DestroyTree();
+                        }
+                        break;
                 }
             }
         }

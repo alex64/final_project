@@ -5,7 +5,7 @@ using UnityEngine;
 public class EndItemManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject finisObject;
+    private GameObject finishObject;
 
     private bool isSignCreated = false;
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class EndItemManager : MonoBehaviour
         Debug.Log("Create sign");
         Quaternion objectRotation = gameObject.transform.rotation;
         Destroy(gameObject.transform.GetChild(0).gameObject);
-        GameObject sign = Instantiate(finisObject, transform.position, objectRotation);
+        GameObject sign = Instantiate(finishObject, transform.position, objectRotation);
         sign.transform.parent = gameObject.transform;
         
     }

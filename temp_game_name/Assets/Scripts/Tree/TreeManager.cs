@@ -14,7 +14,7 @@ public class TreeManager : MonoBehaviour
     [SerializeField] private GameObject treeLog;
     [SerializeField] private GameObject bridge;
 
-    private bool isGrown = true; //false;
+    private bool isGrown = false;
     private bool isDestroyed = false;
     private bool isBridgeCreated = false;
     private bool hasLightingRod = false;
@@ -25,16 +25,17 @@ public class TreeManager : MonoBehaviour
     public bool HasLightingRod { get => hasLightingRod; set => hasLightingRod = value; }
 
     public void GrowTree(){
+        transform.position += new Vector3(0f, 3.5f, 0f);
         transform.localScale = transform.localScale * 2;
         isGrown = true;
         isDestroyed = false;
     }
 
     public void DestroyTree(){
+        isGrown = false;
+        isDestroyed = true;
         Invoke("DestroyTreeAction", 2f);
         Invoke("InstantiateTreeLogAction", 2f);
-        isDestroyed = true;
-        isGrown = false;
     }
 
     private void DestroyTreeAction(){
@@ -43,7 +44,7 @@ public class TreeManager : MonoBehaviour
     }
 
     private void InstantiateTreeLogAction(){
-        Instantiate(treeLog, transform);
+        Instantiate(treeLog, transform.position + new Vector3(0, -3.5f, 0), transform.rotation);
     }
 
     public void CreateBridge(){
