@@ -7,12 +7,13 @@ public class TotemTrigger : MonoBehaviour
     [SerializeField] private TreeManager treeManager;
     [SerializeField] private float timeInTotem = 2f;
     [SerializeField] private TotemType totemType;
+    [SerializeField] private GameObject totemLight;
+    [SerializeField] private GameObject sunLight;
     
     enum TotemType {Rain, Thunder};
     private float time = 0f;
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("TEst");
         if(other.gameObject.CompareTag("Player")){
             time = 0f;
         }
@@ -22,7 +23,8 @@ public class TotemTrigger : MonoBehaviour
         if(other.gameObject.CompareTag("Player")){
             time += Time.deltaTime;
             if(time >= timeInTotem){
-                Debug.Log("Time");
+                totemLight.SetActive(true);
+                sunLight.SetActive(false);
                 switch(totemType){
                     case TotemType.Rain:
                         //Set Ligt Blue
@@ -33,7 +35,6 @@ public class TotemTrigger : MonoBehaviour
                         }
                         break;
                     case TotemType.Thunder:
-                        Debug.Log("Thunder");
                         //Set Ligt Yellow
                         if(!treeManager.IsGrown && !treeManager.IsDestroyed) 
                         {
@@ -42,7 +43,6 @@ public class TotemTrigger : MonoBehaviour
                         }
                         if(treeManager.IsGrown && treeManager.HasLightingRod && !treeManager.IsBridgeCreated) 
                         {
-                            Debug.Log("Create Bridge");
                             treeManager.CreateBridge();
                             time = 0;
                         }
@@ -52,8 +52,10 @@ public class TotemTrigger : MonoBehaviour
         }
     }
 
-    private void SetLights() 
-    {
-
+    private void OnTriggerExit(Collider other) {
+        if(other.gameObject.CompareTag("Player")){
+            totemLight.SetActive(false);
+            sunLight.SetActive(true);
+        }
     }
 }

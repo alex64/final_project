@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 64000012912377258}
   - component: {fileID: 2638131741927337885}
   - component: {fileID: 9112621054238304074}
-  - component: {fileID: 7354041512713170120}
+  - component: {fileID: 3892867335309190126}
   m_Layer: 0
   m_Name: Grass_Flat_Ground
   m_TagString: Untagged
@@ -128,7 +128,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 1.3069043, z: 0}
   m_Center: {x: 0, y: -0.34654817, z: -2}
---- !u!65 &7354041512713170120
+--- !u!65 &3892867335309190126
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,5 +139,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 1.293287, z: 0}
-  m_Center: {x: 0, y: -0.35335684, z: 2}
+  m_Size: {x: 0, y: 1.3058577, z: 4}
+  m_Center: {x: -2, y: -0.34707153, z: 0}

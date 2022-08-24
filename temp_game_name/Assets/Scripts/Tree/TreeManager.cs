@@ -14,10 +14,19 @@ public class TreeManager : MonoBehaviour
     [Range(1f, 2f)]
     private float treeActionsDelay = 2f;
     
+    [SerializeField]
+    [Range(1f, 2f)]
+    private float thunderActionsDelay = 1f;
+
+    [SerializeField]
+    [Range(1f, 2f)]
+    private float thunderActionsActiveTime = 2f;
 
     [SerializeField] private GameObject treeLog;
     [SerializeField] private GameObject normalTree;
     [SerializeField] private GameObject bridge;
+    [SerializeField] private GameObject thunder;
+    [SerializeField][Range(0f, 5f)] private float growPositionY = 1f;
 
     private bool isGrown = false;
     private bool isDestroyed = false;
@@ -37,6 +46,7 @@ public class TreeManager : MonoBehaviour
             TreeRotation();
             if(!triggerDeleteRotationTree) 
             {
+                ActivateThunder();
                 Invoke("DestroyTreeAction", treeActionsDelay);
                 triggerDeleteRotationTree = true;
             }
@@ -70,11 +80,21 @@ public class TreeManager : MonoBehaviour
         Debug.Log("Destroy");
         isGrown = false;
         isDestroyed = true;
+        ActivateThunder();
         Invoke("DestroyTreeAction", treeActionsDelay);
         Invoke("InstantiateTreeLogAction", treeActionsDelay);
     }
 
+    private void ActivateThunder(){
+        thunder.SetActive(true);
+    }
+
+    private void DeactivateThunder(){
+        thunder.SetActive(false);
+    }
+
     private void DestroyTreeAction(){
+        Invoke("DeactivateThunder", 1f);
         GameObject fallingTree = gameObject.transform.GetChild(0).gameObject;
         Destroy(fallingTree);
         if(isBridgeCreated) 
@@ -85,7 +105,7 @@ public class TreeManager : MonoBehaviour
     }
 
     private void InstantiateTreeAction(){
-        GameObject newTree = Instantiate(normalTree, transform.position + new Vector3(0, 3f, 0), transform.rotation);
+        GameObject newTree = Instantiate(normalTree, transform.position + new Vector3(0, growPositionY, 0), transform.rotation);
         newTree.transform.parent = gameObject.transform;
         changeTree();
     }
