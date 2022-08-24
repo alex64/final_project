@@ -13,14 +13,6 @@ public class TreeManager : MonoBehaviour
     [SerializeField]
     [Range(1f, 2f)]
     private float treeActionsDelay = 2f;
-    
-    [SerializeField]
-    [Range(1f, 2f)]
-    private float thunderActionsDelay = 1f;
-
-    [SerializeField]
-    [Range(1f, 2f)]
-    private float thunderActionsActiveTime = 2f;
 
     [SerializeField] private GameObject treeLog;
     [SerializeField] private GameObject normalTree;

@@ -13,10 +13,10 @@ public class EnemyMove : MonoBehaviour
     private float runDelay = 2f;
 
     [SerializeField]
-    [Range(-1f, -50f)]
+    [Range(-50f, 0)]
     private float minMovRange = -50f;
     [SerializeField]
-    [Range(1f, 50f)]
+    [Range(0, 50f)]
     private float maxMovRange = 50f;
 
     [SerializeField] 
@@ -78,6 +78,7 @@ public class EnemyMove : MonoBehaviour
         if(!isMoving) 
         {
             moveDirection = randomDirection();
+            Debug.Log(moveDirection);
             isMoving = true;
             isRotating = true;
         }
