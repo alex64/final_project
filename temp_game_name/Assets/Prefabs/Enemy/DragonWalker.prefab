@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8753075088276691558}
   - component: {fileID: 1722760171525394239}
   - component: {fileID: 8484480963501073605}
+  - component: {fileID: 7383960593131745474}
+  - component: {fileID: 1455505011703893863}
   m_Layer: 0
   m_Name: DragonWalker
   m_TagString: Untagged
@@ -52,6 +54,7 @@ MonoBehaviour:
   runDelay: 2
   minMovRange: -50
   maxMovRange: 50
+  movementForce: 3
   enemyAnimator: {fileID: 2064213531525391621}
   playerTransform: {fileID: 0}
   enemyType: 0
@@ -99,6 +102,31 @@ CapsuleCollider:
   m_Height: 1.713357
   m_Direction: 2
   m_Center: {x: 0, y: 0.5045639, z: -1.4866891}
+--- !u!114 &7383960593131745474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007304837762414911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a4a7934ac3a80429ef102a22a50f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
+--- !u!114 &1455505011703893863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007304837762414911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c496abd3d332b04db119a9a90175bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4732132453726321902
 PrefabInstance:
   m_ObjectHideFlags: 0

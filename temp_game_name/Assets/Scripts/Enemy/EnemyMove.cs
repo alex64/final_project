@@ -19,6 +19,10 @@ public class EnemyMove : MonoBehaviour
     [Range(0, 50f)]
     private float maxMovRange = 50f;
 
+    [SerializeField]
+    [Range(1f, 2000f)]
+    private float movementForce = 3f;
+
     [SerializeField] 
     private Animator enemyAnimator;
 
@@ -28,31 +32,43 @@ public class EnemyMove : MonoBehaviour
     private Vector3 moveDirection;
     private bool isMoving = false;
     private bool isRotating = false;
+    private Rigidbody enemyRB;
+    private string damageAnimation;
+    private string idleAnimation;
 
     //Runner Variables
     [SerializeField]
     private Transform playerTransform;
 
-    enum EnemyType { Walker, Runner, Stalker };
+    public enum EnemyType { Walker, Runner, Stalker };
 
-    [SerializeField] EnemyType enemyType;
+    [SerializeField] 
+    private EnemyType enemyType;
 
     public Transform PlayerTransform { get => playerTransform; set => playerTransform = value; }
+
+    public EnemyType EnemyType1 { get => enemyType; set => enemyType = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerAttackCollider.damageEnemyAction += DamageMovement;
-        switch (enemyType)
+        enemyRB = GetComponent<Rigidbody>();
+
+        switch (EnemyType1)
         {
             case EnemyType.Runner:
                 enemyAnimator.SetTrigger("movingTriggerRunner");
+                damageAnimation = "damagedTriggerRunner";
+                idleAnimation = "idleTriggerRunner";
                 break;
             case EnemyType.Stalker:
                 if(enemyAnimator!= null) {
                     enemyAnimator.SetTrigger("movingTriggerRunner");
                 }
-                
+                break;
+            case EnemyType.Walker:
+                damageAnimation = "damageTriggerWalker";
+                idleAnimation = "idleTriggerWalker";
                 break;
         }
     }
@@ -60,13 +76,13 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (enemyType)
+        switch (EnemyType1)
         {
             case EnemyType.Walker:
-                Invoke("WalkerMovement",runDelay);
+                //Invoke("WalkerMovement",runDelay);
                 break;
             case EnemyType.Runner:
-                ChasePlayer(false);
+                //ChasePlayer(false);
                 break;
             case EnemyType.Stalker:
                 ChasePlayer(true);
@@ -134,7 +150,7 @@ public class EnemyMove : MonoBehaviour
     {
         LookPlayer(isChasePlayer);
         Vector3 chaseDirection = PlayerTransform.position - transform.position;
-        //transform.position += chaseDirection.normalized * (isChasePlayer?1:-1) * speed * Time.deltaTime; 
+        transform.position += chaseDirection.normalized * (isChasePlayer?1:-1) * speed * Time.deltaTime; 
     }
 
     private void LookPlayer(bool isChasePlayer)
@@ -148,9 +164,20 @@ public class EnemyMove : MonoBehaviour
         return enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName(animName);
     }
 
-    private void DamageMovement(int notused) {
-        Debug.Log("Move");
-        Vector3 chaseDirection = PlayerTransform.position - transform.position;
-        transform.position += chaseDirection.normalized * -1 * 15 * Time.deltaTime; 
+    private bool isDamaged = false;
+
+    public void DamageMovement() {
+        isDamaged = true;
+    }
+    
+    private void FixedUpdate() {
+        if(isDamaged) 
+        {
+            enemyAnimator.SetTrigger(damageAnimation);
+            Vector3 chaseDirection = transform.position - PlayerTransform.position;
+            enemyRB.AddForce(transform.TransformDirection(chaseDirection.normalized) * movementForce, ForceMode.Force);
+            isDamaged = false;
+            enemyAnimator.SetTrigger(idleAnimation);
+        }
     }
 }

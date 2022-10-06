@@ -11,7 +11,7 @@ public class EnemyData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerAttackCollider.damageEnemyAction += Damage;
+        //EnemyCollider.enemyHealthAction += Damage;
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class EnemyData : MonoBehaviour
         
     }
 
-    private void Damage(int damage) {
+    public void LowerHP(int damage) {
         hp -= damage;
         if(hp == 0) {
             Destroy(gameObject);

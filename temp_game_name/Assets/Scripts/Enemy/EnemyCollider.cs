@@ -1,14 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyCollider : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.CompareTag("Player")) 
+    private bool executingAction = false;
+
+    private void OnTriggerExit(Collider other) {
+        if(other.gameObject.CompareTag("Sword")) 
         {
-            //Debug.Log("IsAttacking: " + other.gameObject.GetComponent<PlayerData>().IsAttacking);
+            PlayerData playerData = other.GetComponentInParent<PlayerData>();
+            if(playerData.IsAttacking && !executingAction) {
+                executingAction = true;
+                Invoke("DamageEnemy", 0.5f);
+            }
+            
         }
-        
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if(other.gameObject.CompareTag("Sword")) 
+        {
+            PlayerData playerData = other.GetComponentInParent<PlayerData>();
+            if(playerData.IsAttacking && !executingAction) {
+                executingAction = true;
+                Invoke("DamageEnemy", 0.5f);
+            }
+        }
+    }
+
+    private void DamageEnemy() {
+        Debug.Log("Lower Enemy HP");
+        executingAction = false;
+        GetComponent<EnemyMove>().DamageMovement();
+        GetComponent<EnemyData>().LowerHP(1);
     }
 }
