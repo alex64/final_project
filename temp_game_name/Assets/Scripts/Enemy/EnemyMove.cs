@@ -42,6 +42,7 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerAttackCollider.damageEnemyAction += DamageMovement;
         switch (enemyType)
         {
             case EnemyType.Runner:
@@ -133,7 +134,7 @@ public class EnemyMove : MonoBehaviour
     {
         LookPlayer(isChasePlayer);
         Vector3 chaseDirection = PlayerTransform.position - transform.position;
-        transform.position += chaseDirection.normalized * (isChasePlayer?1:-1) * speed * Time.deltaTime; 
+        //transform.position += chaseDirection.normalized * (isChasePlayer?1:-1) * speed * Time.deltaTime; 
     }
 
     private void LookPlayer(bool isChasePlayer)
@@ -145,5 +146,11 @@ public class EnemyMove : MonoBehaviour
     private bool isAnimationActive(string animName)
     {
         return enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName(animName);
+    }
+
+    private void DamageMovement(int notused) {
+        Debug.Log("Move");
+        Vector3 chaseDirection = PlayerTransform.position - transform.position;
+        transform.position += chaseDirection.normalized * -1 * 15 * Time.deltaTime; 
     }
 }

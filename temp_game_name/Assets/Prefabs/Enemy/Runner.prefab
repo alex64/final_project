@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 7406669613621066262}
   - component: {fileID: 1978775287200311510}
   - component: {fileID: 4463505333711121450}
+  - component: {fileID: 8524990543884122646}
+  - component: {fileID: 2198990456502739150}
   m_Layer: 0
   m_Name: Runner
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +85,30 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.55
   m_Center: {x: 0, y: 0.45, z: 0}
+--- !u!114 &8524990543884122646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487232612645758399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a4a7934ac3a80429ef102a22a50f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2198990456502739150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487232612645758399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c496abd3d332b04db119a9a90175bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &976721355090073357
 PrefabInstance:
   m_ObjectHideFlags: 0

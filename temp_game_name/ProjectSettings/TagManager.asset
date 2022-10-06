@@ -7,6 +7,9 @@ TagManager:
   - MagicItem
   - FallingTree
   - Chest
+  - TreeLog
+  - Sword
+  - Enemy
   layers:
   - Default
   - TransparentFX

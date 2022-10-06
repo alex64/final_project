@@ -599,6 +599,8 @@ MonoBehaviour:
   treeManager: {fileID: 1437115892}
   timeInTotem: 2
   totemType: 0
+  totemLight: {fileID: 0}
+  sunLight: {fileID: 0}
 --- !u!1 &667947084
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 487232612645758399, guid: 48fc4dc76ad8fc64395fa1ff23f9bdee, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3285430020925778592, guid: 48fc4dc76ad8fc64395fa1ff23f9bdee, type: 3}
       propertyPath: m_RootOrder
@@ -739,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3285430020925778592, guid: 48fc4dc76ad8fc64395fa1ff23f9bdee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.99
+      value: -12.23
       objectReference: {fileID: 0}
     - target: {fileID: 3285430020925778592, guid: 48fc4dc76ad8fc64395fa1ff23f9bdee, type: 3}
       propertyPath: m_LocalPosition.y
@@ -747,7 +749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3285430020925778592, guid: 48fc4dc76ad8fc64395fa1ff23f9bdee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.98
+      value: 11.94
       objectReference: {fileID: 0}
     - target: {fileID: 3285430020925778592, guid: 48fc4dc76ad8fc64395fa1ff23f9bdee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -776,6 +778,10 @@ PrefabInstance:
     - target: {fileID: 3285430020925778592, guid: 48fc4dc76ad8fc64395fa1ff23f9bdee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406669613621066262, guid: 48fc4dc76ad8fc64395fa1ff23f9bdee, type: 3}
+      propertyPath: speed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7406669613621066262, guid: 48fc4dc76ad8fc64395fa1ff23f9bdee, type: 3}
       propertyPath: m_Enabled
@@ -1395,6 +1401,8 @@ MonoBehaviour:
   treeManager: {fileID: 1437115892}
   timeInTotem: 2
   totemType: 1
+  totemLight: {fileID: 0}
+  sunLight: {fileID: 0}
 --- !u!1001 &1534709196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1716,7 +1724,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 3.0119793, y: 1}
+    m_SensorSize: {x: 3.5093124, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
