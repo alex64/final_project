@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : PlayerDefault
 {
-    [SerializeField]
-    private Animator playerAttackAnimator;
 
     private KeyCode attackCode = KeyCode.Return;
 
     public static event Action<bool> onAttack;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -31,10 +23,5 @@ public class PlayerAttack : MonoBehaviour
             TriggerAnimation("Idle_Trigger");
             onAttack?.Invoke(false);
         }
-    }
-
-    private void TriggerAnimation(string animationName)
-    {
-        playerAttackAnimator.SetTrigger(animationName);
     }
 }

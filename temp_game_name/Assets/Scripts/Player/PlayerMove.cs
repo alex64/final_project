@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMove : PlayerDefault
 {
     [SerializeField]
     private float speed = 2f;
-
-    [SerializeField] 
-    private Animator playerAnimator;
 
     private Dictionary<KeyCode, Vector3> movementList = new Dictionary<KeyCode, Vector3>();
 
@@ -55,11 +52,6 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void TriggerAnimation(string animationName)
-    {
-        playerAnimator.SetTrigger(animationName);
-    }
-
     private void Movement(Vector3 direction)
     {
         transform.Translate(direction * speed * Time.deltaTime);
@@ -79,6 +71,6 @@ public class PlayerMove : MonoBehaviour
 
     private bool IsAnimation(string animName)
     {
-        return playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(animName);
+        return PlayerAnimation.GetCurrentAnimatorStateInfo(0).IsName(animName);
     }
 }

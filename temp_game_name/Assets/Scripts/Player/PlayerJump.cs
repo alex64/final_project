@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJump : MonoBehaviour
+public class PlayerJump : PlayerDefault
 {
-
-    [SerializeField]
-    private Animator playerJumpAnimator;
 
     [SerializeField]
     [Range(1f, 200f)]
@@ -41,6 +38,7 @@ public class PlayerJump : MonoBehaviour
         {
             playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Acceleration);
             inDelayJump = true;
+            TriggerAnimation("Idle_Trigger");
             Invoke("DelayNextJump", delayNextJump);
         }
     }
@@ -49,11 +47,5 @@ public class PlayerJump : MonoBehaviour
     {
         inDelayJump = false;
         canJump = true;
-        TriggerAnimation("Idle_Trigger");
-    }
-
-    private void TriggerAnimation(string animationName)
-    {
-        playerJumpAnimator.SetTrigger(animationName);
     }
 }

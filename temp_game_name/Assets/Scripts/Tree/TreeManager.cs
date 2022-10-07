@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeManager : MonoBehaviour
+public class TreeManager : GeneralMagicElement
 {
     [SerializeField]
     private GameObject lightingRod;

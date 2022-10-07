@@ -10,6 +10,7 @@ TagManager:
   - TreeLog
   - Sword
   - Enemy
+  - RiverSide
   layers:
   - Default
   - TransparentFX

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerCollision : MonoBehaviour
 {
     private PlayerData playerData;
     private TreeManager treeManager;
+    public static event Action<GeneralMagicElement> onCollision;
+    public static event Action onExit;
 
     private void Start() 
     {
@@ -19,6 +22,11 @@ public class PlayerCollision : MonoBehaviour
             playerData.HasMagicItem = true;
             Destroy(other.gameObject);
         }
+        if(other.gameObject.CompareTag("ShovelItem"))
+        {
+            playerData.HasShovel = true;
+            Destroy(other.gameObject);
+        }
         if(other.gameObject.CompareTag("Finish"))
         {
             other.gameObject.GetComponent<EndItemManager>().CreateFinishMessage();
@@ -28,10 +36,12 @@ public class PlayerCollision : MonoBehaviour
     }
 
     private void OnCollisionStay(Collision other) {
-        if(other.gameObject.CompareTag("FallingTree"))
+        if(other.gameObject.CompareTag("FallingTree") 
+                || other.gameObject.CompareTag("RiverSide"))
         {
-            Debug.Log("Collision stay falling Tree");
-            playerData.CollideWithTree = true;
+            Debug.Log("Collision stay with: " + other.gameObject.tag);
+            onCollision?.Invoke(other.gameObject.GetComponent<GeneralMagicElement>().Instance);
+            //playerData.CollidedWithActionElement = true;
             /*treeManager = other.gameObject.GetComponent<TreeManager>();
             if(!treeManager.HasLightingRod && treeManager.IsGrown)
             {
@@ -43,13 +53,15 @@ public class PlayerCollision : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.gameObject.CompareTag("FallingTree"))
+        if(other.gameObject.CompareTag("FallingTree")  
+                || other.gameObject.CompareTag("RiverSide"))
         {
-            playerData.CollideWithTree = false;
+            //playerData.CollidedWithActionElement = false;
+            onExit?.Invoke();
         }
     }
 
-    private void AddMagicItem()
+    /*private void AddMagicItem()
     {
         
         if(Input.GetKeyDown(KeyCode.O)) 
@@ -65,5 +77,5 @@ public class PlayerCollision : MonoBehaviour
             }
             
         }
-    }
+    }*/
 }

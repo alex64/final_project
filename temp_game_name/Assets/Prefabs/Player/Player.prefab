@@ -84,8 +84,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae139ff48cef1964f8def686d6051725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimation: {fileID: 5535817826231071838}
   speed: 2
-  playerAnimator: {fileID: 5535817826231071838}
 --- !u!54 &671226940825452020
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -152,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf31bdddf6efdf44a66a173fd7dea13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeManager: {fileID: 0}
+  playerAnimation: {fileID: 5535817826231071838}
+  delayNextDig: 0.4
 --- !u!114 &2622764007073733717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffcab636db7475448a4314ae48b1c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackAnimator: {fileID: 5535817826231071838}
+  playerAnimation: {fileID: 5535817826231071838}
 --- !u!114 &5641941786215064298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319235300ad2123449213d7a6e2a2ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJumpAnimator: {fileID: 5535817826231071838}
+  playerAnimation: {fileID: 5535817826231071838}
   delayNextJump: 1
   jumpForce: 250
 --- !u!1001 &4740951938652565098
