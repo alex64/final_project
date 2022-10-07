@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField]
     private Animator playerAttackAnimator;
 
-    private KeyCode attackCode = KeyCode.KeypadEnter;
+    private KeyCode attackCode = KeyCode.Return;
 
     public static event Action<bool> onAttack;
 
