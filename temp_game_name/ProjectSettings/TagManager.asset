@@ -15,6 +15,7 @@ TagManager:
   - RiverSideLeft
   - RiverSideCenter
   - RiverSideRigth
+  - Rock
   layers:
   - Default
   - TransparentFX
