@@ -76,8 +76,9 @@ public class PlayerMagicAction : PlayerDefault
                     TriggerAnimation("Dig_Trigger");
                     canPerformAction = false;
                     ToggleShovel(true);
-                    if(magicEnvElement != null && magicEnvElement is RiverManager) 
+                    if(magicEnvElement != null && magicEnvElement is RiverBorderCollider) 
                     {
+                        RiverBorderCollider riverCollider = (RiverBorderCollider)magicEnvElement;
                         OnTriggerShovel?.Invoke();
                     }
                     Invoke("DelayNextDig", delayNextDig); 

@@ -11,6 +11,10 @@ TagManager:
   - Sword
   - Enemy
   - RiverSide
+  - ShovelItem
+  - RiverSideLeft
+  - RiverSideCenter
+  - RiverSideRigth
   layers:
   - Default
   - TransparentFX

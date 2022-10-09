@@ -39,16 +39,8 @@ public class PlayerCollision : MonoBehaviour
         if(other.gameObject.CompareTag("FallingTree") 
                 || other.gameObject.CompareTag("RiverSide"))
         {
-            Debug.Log("Collision stay with: " + other.gameObject.tag);
+            //Debug.Log("Collision stay with: " + other.gameObject.tag);
             onCollision?.Invoke(other.gameObject.GetComponent<GeneralMagicElement>().Instance);
-            //playerData.CollidedWithActionElement = true;
-            /*treeManager = other.gameObject.GetComponent<TreeManager>();
-            if(!treeManager.HasLightingRod && treeManager.IsGrown)
-            {
-                playerData.CollideWithTree = true;
-            }*/
-            //AddMagicItem();
-
         }
     }
 
