@@ -7,22 +7,17 @@ public class EnemyData : MonoBehaviour
 
     [SerializeField]
     private int hp = 3;
+    public int Hp { get => hp; set => hp = value; }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //EnemyCollider.enemyHealthAction += Damage;
-    }
+    [SerializeField]
+    [Range(1f, 15f)]
+    private float rayDistance = 10f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float RayDistance { get => rayDistance; set => rayDistance = value; }
 
     public void LowerHP(int damage) {
-        hp -= damage;
-        if(hp == 0) {
+        Hp -= damage;
+        if(Hp == 0) {
             Destroy(gameObject);
         }
     }

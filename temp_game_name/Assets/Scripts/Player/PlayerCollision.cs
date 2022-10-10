@@ -5,10 +5,16 @@ using System;
 
 public class PlayerCollision : MonoBehaviour
 {
+    [SerializeField]
+    private float damageTime = 3f;
+
     private PlayerData playerData;
     private TreeManager treeManager;
     public static event Action<GeneralMagicElement> onCollision;
     public static event Action onExit;
+    public static event Action onDamage;
+
+    private bool isDamaged = false;
 
     private void Start() 
     {
@@ -48,26 +54,22 @@ public class PlayerCollision : MonoBehaviour
         if(other.gameObject.CompareTag("FallingTree")  
                 || other.gameObject.CompareTag("RiverSide"))
         {
-            //playerData.CollidedWithActionElement = false;
             onExit?.Invoke();
         }
     }
 
-    /*private void AddMagicItem()
+    private void OnParticleCollision(GameObject other)
     {
-        
-        if(Input.GetKeyDown(KeyCode.O)) 
+        if(other.gameObject.CompareTag("Fire") && !isDamaged)
         {
-            if(playerData.HasMagicItem && !treeManager.HasLightingRod && treeManager.IsGrown) 
-            {
-                Debug.Log("Adding Ligthing Rod");
-                treeManager.AddLightingRod();
-            }
-            else 
-            {
-                Debug.Log("Cannot attach magic item or already has it");
-            }
-            
+            isDamaged = true;
+            onDamage?.Invoke();
+            Invoke("RecoileDamage", damageTime);
         }
-    }*/
+    }
+
+    private void RecoileDamage()
+    {
+        isDamaged = false;
+    }
 }

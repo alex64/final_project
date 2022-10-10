@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField]
+    //[SerializeField]
     private int hp = 3;
     public int Hp { get => hp; set => hp = value; }
 
@@ -19,16 +19,27 @@ public class PlayerData : MonoBehaviour
 
     private bool isAttacking = false;
     public bool IsAttacking { get => isAttacking; set => isAttacking = value; }
-    
 
     private void Start() {
         GameManager.setPlayerHP(hp);
         PlayerAttack.onAttack += PlayerIsAttacking;
+        PlayerCollision.onDamage += LowerHP;
     }
     
     private void PlayerIsAttacking(bool isAttacking)
     {
         IsAttacking = isAttacking;
         //Debug.Log("Player: " + IsAttacking);
+    }
+
+    private void LowerHP()
+    {
+        Hp--;
+        //HUDManager.instance.DecreaseLife(Hp);
+        Debug.Log("Player Life: " + Hp);
+        if(Hp == 0) 
+        {
+
+        }
     }
 }

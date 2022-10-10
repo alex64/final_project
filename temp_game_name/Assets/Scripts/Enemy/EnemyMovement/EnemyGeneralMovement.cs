@@ -12,10 +12,6 @@ public class EnemyGeneralMovement : MonoBehaviour
     [Range(1f, 2000f)]
     private float movementForce = 3f;
 
-    [SerializeField]
-    [Range(1f, 2000f)]
-    private float damangeForce = 3f;
-
     [SerializeField] 
     private Animator enemyAnimator;
     protected Animator EnemyAnimator { get => enemyAnimator; set => enemyAnimator = value; }
@@ -23,13 +19,25 @@ public class EnemyGeneralMovement : MonoBehaviour
     [SerializeField]
     private Transform playerTransform;
     protected Transform PlayerTransform { get => playerTransform; set => playerTransform = value; }
-    
+
+    [SerializeField] 
+    private List<Transform> raycastPointList;
+
+    protected string lastAnimationTrigger;
+
+    protected EnemyData enemyData;
 
     private string damageAnimation;
     protected string DamageAnimation { get => damageAnimation; set => damageAnimation = value; }
 
     private string idleAnimation;
     protected string IdleAnimation { get => idleAnimation; set => idleAnimation = value; }
+
+    private string moveAnimation;
+    protected string MoveAnimation { get => moveAnimation; set => moveAnimation = value; }
+
+    private string attackAnimation;
+    protected string AttackAnimation { get => attackAnimation; set => attackAnimation = value; }
 
     private Rigidbody enemyRB;
     private bool isDamaged = false;
@@ -41,17 +49,21 @@ public class EnemyGeneralMovement : MonoBehaviour
     protected virtual void Start()
     {
         enemyRB = GetComponent<Rigidbody>();
+        enemyData = GetComponent<EnemyData>();
     }
 
     protected virtual void FixedUpdate() {
         if(isDamaged) 
         {
-            EnemyAnimator.SetTrigger(DamageAnimation);
+            string lastTrigger = lastAnimationTrigger;
+            SetAnimation(DamageAnimation);
             Vector3 chaseDirection = transform.position - PlayerTransform.position;
             enemyRB.AddForce(transform.TransformDirection(chaseDirection.normalized) * movementForce, ForceMode.Force);
             isDamaged = false;
-            EnemyAnimator.SetTrigger(IdleAnimation);
+            SetAnimation(lastTrigger);
         }
+
+        EnemyRaycast();
     }
 
     public void MoveForce(Vector3 direction) 
@@ -78,7 +90,7 @@ public class EnemyGeneralMovement : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, 1.5f * Time.deltaTime);
         if(Mathf.Abs(Quaternion.Dot(newRotation, transform.rotation)) > 0.99) {
             IsRotating = false;
-            EnemyAnimator.SetTrigger("movingTriggerWalker");
+            SetAnimation(MoveAnimation);
         }
         
     }
@@ -103,5 +115,51 @@ public class EnemyGeneralMovement : MonoBehaviour
 
     public void DamageMovement() {
         isDamaged = true;
+        DamageAction();
+    }
+
+    protected virtual void DamageAction()
+    {
+        //Empty for inheritance
+    }
+
+    private void EnemyRaycast()
+    {
+        RaycastHit hit;
+        foreach(Transform raycastPoint in raycastPointList) 
+        {
+            if (Physics.Raycast(raycastPoint.position, raycastPoint.TransformDirection(Vector3.forward), out hit, enemyData.RayDistance))
+            {
+                if (hit.transform.CompareTag("Player"))
+                {
+                    Debug.Log("Spoted player");
+                    SpotPlayerAction();
+                }
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        foreach(Transform raycastPoint in raycastPointList)
+        {
+            Gizmos.color = Color.blue;
+            if(raycastPoint != null && enemyData != null) 
+            {
+                Vector3 direction = raycastPoint.TransformDirection(Vector3.forward) * enemyData.RayDistance;
+                Gizmos.DrawRay(raycastPoint.position, direction);
+            }  
+        }
+    }
+
+    protected virtual void SpotPlayerAction()
+    {
+        //Empty for inheritance
+    }
+
+    protected void SetAnimation(string animationTrigger)
+    {
+        lastAnimationTrigger = animationTrigger;
+        EnemyAnimator.SetTrigger(animationTrigger);
     }
 }

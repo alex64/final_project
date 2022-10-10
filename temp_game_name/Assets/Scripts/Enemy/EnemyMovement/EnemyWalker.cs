@@ -17,11 +17,15 @@ public class EnemyWalker : EnemyGeneralMovement
 
     private float moveX = 0f;
     private float moveZ = 0f;
-    private Vector3 moveDirection;
+    private Vector3 moveDirection = Vector3.zero;
+    private Vector3 previousDirection = Vector3.zero;
+    
     private bool isMoving = false;
-    
-    
-    
+    protected bool IsMoving { get => isMoving; set => isMoving = value; }
+
+    private bool stopMoving = false;
+    protected bool StopMoving { get => stopMoving; set => stopMoving = value; }
+
 
     // Start is called before the first frame update
     protected override void Start()
@@ -29,20 +33,18 @@ public class EnemyWalker : EnemyGeneralMovement
         base.Start();
         DamageAnimation = "damageTriggerWalker";
         IdleAnimation = "idleTriggerWalker";
+        MoveAnimation = "movingTriggerWalker";
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        //Invoke("RotateMovement",runDelay);
-        Invoke("WalkerMovement",runDelay);
+        if(!stopMoving)
+        {
+            //Invoke("WalkerMovement",runDelay);
+            WalkerMovement();
+        }
     }
-
-    /*protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
-        Invoke("WalkerMovement",runDelay);
-    }*/
 
     private Vector3 randomDirection()
     {
@@ -51,45 +53,13 @@ public class EnemyWalker : EnemyGeneralMovement
         return new Vector3(moveX, 0, moveZ);
     }
 
-    /*private void WalkerMovement()
-    {
-        if(!isMoving) 
-        {
-            moveDirection = randomDirection();
-            Debug.Log(moveDirection);
-            isMoving = true;
-            IsRotating = true;
-        }
-        if(!IsRotating) 
-        { 
-            Vector3 diffMovement = transform.position - moveDirection;
-            //MoveTranslation(diffMovement);
-            //MoveForce(diffMovement);
-            MoveForce(moveDirection);
-            if(diffMovement.magnitude < 1) {
-                Debug.Log("Reached destination");
-                isMoving = false;
-                EnemyAnimator.SetTrigger("idleTriggerWalker");
-            }
-        }
-    }
-
-    private void RotateMovement()
-    {
-        if(IsRotating)
-        {
-            Rotate(moveDirection);
-        }
-        
-    }*/
-
     private void WalkerMovement()
     {
-        if(!isMoving) 
+        if(!IsMoving) 
         {
             moveDirection = randomDirection();
             Debug.Log(moveDirection);
-            isMoving = true;
+            IsMoving = true;
             IsRotating = true;
         }
         if(IsRotating) 
@@ -97,22 +67,20 @@ public class EnemyWalker : EnemyGeneralMovement
             Rotate(moveDirection);
         }
         else 
-        {
-            /*if(!isAnimationActive("movingTriggerWalker"))
-            {
-                enemyAnimator.SetTrigger("movingTriggerWalker");
-            }*/
-            
+        {   
             Vector3 diffMovement = moveDirection - transform.position;
             MoveTranslation(diffMovement);
             if(diffMovement.magnitude < 1) {
                 Debug.Log("Reached destination");
-                isMoving = false;
-                EnemyAnimator.SetTrigger("idleTriggerWalker");
+                IsMoving = false;
+                SetAnimation(IdleAnimation);
             }
             
         }
-        
-        
+    }
+
+    protected override void DamageAction()
+    {
+        IsMoving = false;
     }
 }
