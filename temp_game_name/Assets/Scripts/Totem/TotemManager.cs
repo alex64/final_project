@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TotemManager : MonoBehaviour
 {
-    enum TotemType {Rain, Thunder, Fire};
+    enum TotemType {Rain, Thunder, Fire, Ice};
 
     [SerializeField] 
     private GeneralMagicElement magicEnvElement;
@@ -22,6 +22,7 @@ public class TotemManager : MonoBehaviour
 
     private TreeManager treeManager;
     private RiverManager riverManager;
+    private WaterfallManager waterfallManager;
 
     private float time = 0f;
 
@@ -52,6 +53,9 @@ public class TotemManager : MonoBehaviour
                     case TotemType.Fire:
                         FireTotemAction();
                         break;
+                    case TotemType.Ice:
+                        IceTotemAction();
+                        break;
                 }
             }
         }
@@ -79,6 +83,10 @@ public class TotemManager : MonoBehaviour
         if(magicEnvElement is RiverManager)
         {
             riverManager = (RiverManager)magicEnvElement;
+        }
+        if(magicEnvElement is WaterfallManager) 
+        {
+            waterfallManager = (WaterfallManager)magicEnvElement;
         }
     }
 
@@ -128,6 +136,19 @@ public class TotemManager : MonoBehaviour
             if(riverManager.isRiverActive())
             {
                 riverManager.setRiverActive(false);
+            }
+            time = 0;
+        }
+    }
+
+    private void IceTotemAction()
+    {
+        Debug.Log("Ice Totem Action");
+        if(waterfallManager != null)
+        {
+            if(waterfallManager.isWaterfallActive())
+            {
+                waterfallManager.setWaterfallActive(false);
             }
             time = 0;
         }

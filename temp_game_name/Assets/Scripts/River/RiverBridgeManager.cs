@@ -12,7 +12,7 @@ public class RiverBridgeManager : MonoBehaviour
     private GameObject riverBorder;
 
     [SerializeField]
-    private float maxAscendLevel = 0.1f;
+    private GameObject maxAscendLevel;
 
     [SerializeField]
     [Range(0f, 1f)]
@@ -30,7 +30,7 @@ public class RiverBridgeManager : MonoBehaviour
 
         if(isGoingUp && riverManager.isRiverActive()) 
         {
-            if(transform.position.y < (riverManager.getYPosition() + maxAscendLevel)) 
+            if(transform.position.y < maxAscendLevel.transform.position.y) 
             {
                 transform.Translate(Vector3.up * speed * Time.deltaTime);
             }
