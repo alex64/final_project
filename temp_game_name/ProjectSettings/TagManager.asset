@@ -16,6 +16,8 @@ TagManager:
   - RiverSideCenter
   - RiverSideRigth
   - Rock
+  - Fire
+  - ExitLevel1
   layers:
   - Default
   - TransparentFX

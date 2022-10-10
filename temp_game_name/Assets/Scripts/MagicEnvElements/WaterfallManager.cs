@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaterfallManager : GeneralMagicElement
 {
+    [SerializeField] private GameObject iceWaterfall;
+
     public bool isWaterfallActive()
     {
         return gameObject.activeSelf;
@@ -12,5 +14,6 @@ public class WaterfallManager : GeneralMagicElement
     public void setWaterfallActive(bool activate)
     {
         gameObject.SetActive(activate);
+        iceWaterfall.SetActive(activate);
     }
 }

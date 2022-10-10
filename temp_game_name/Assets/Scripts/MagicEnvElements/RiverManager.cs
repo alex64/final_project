@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RiverManager : GeneralMagicElement
 {
+    [SerializeField] private GameObject riverSteam;
+
     public bool isRiverActive()
     {
         return gameObject.activeSelf;
@@ -16,6 +18,9 @@ public class RiverManager : GeneralMagicElement
             //IF possible, animation for evaporation
         }*/
         gameObject.SetActive(activate);
+        if(!activate){
+            riverSteam.SetActive(activate);
+        }
     }
 
     public float getYPosition()
