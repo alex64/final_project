@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    private bool hasMagicItem = false;
+    [SerializeField]
+    private int hp = 3;
+    public int Hp { get => hp; set => hp = value; }
+
     private bool hasShovel = false;
-    //private bool collideWithTree = false;
+    public bool HasShovel { get => hasShovel; set => hasShovel = value; }
+
     private bool collidedWithActionElement = false;
-    
-    //public bool CollideWithTree { get => collideWithTree; set => collideWithTree = value; }
     public bool CollidedWithActionElement { get => collidedWithActionElement; set => collidedWithActionElement = value; }
 
+    private bool hasMagicItem = false;
     public bool HasMagicItem { get => hasMagicItem; set => hasMagicItem = value; }
 
     private bool isAttacking = false;
     public bool IsAttacking { get => isAttacking; set => isAttacking = value; }
-    public bool HasShovel { get => hasShovel; set => hasShovel = value; }
+    
 
     private void Start() {
+        GameManager.setPlayerHP(hp);
         PlayerAttack.onAttack += PlayerIsAttacking;
     }
     

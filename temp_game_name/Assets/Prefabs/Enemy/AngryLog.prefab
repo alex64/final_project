@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4845170699522929359}
   - component: {fileID: 349215620359249317}
   - component: {fileID: -8538677554403357826}
+  - component: {fileID: 1150600533654698529}
   m_Layer: 0
   m_Name: AngryLog
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7381912527235622192}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb11d090f4b19ff4b9aefc501fac942c, type: 3}
   m_Name: 
@@ -93,9 +94,27 @@ MonoBehaviour:
   runDelay: 2
   minMovRange: -50
   maxMovRange: 50
+  movementForce: 3
   enemyAnimator: {fileID: 0}
   playerTransform: {fileID: 5627234484057646583, guid: 0e5ba6d31cd13eb4c960a82dad5b1be0, type: 3}
   enemyType: 2
+--- !u!114 &1150600533654698529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381912527235622192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f78a852409171468386304ae85ed93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  movementForce: 3
+  enemyAnimator: {fileID: 0}
+  enemyType: 0
+  playerTransform: {fileID: 0}
 --- !u!1001 &2660217899824217831
 PrefabInstance:
   m_ObjectHideFlags: 0

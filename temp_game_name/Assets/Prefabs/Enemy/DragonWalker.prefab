@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 597302051208969610}
+  - component: {fileID: 1745423668715181417}
   - component: {fileID: 2836233613352635537}
   - component: {fileID: 8753075088276691558}
   - component: {fileID: 1722760171525394239}
@@ -38,7 +39,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2836233613352635537
+--- !u!114 &1745423668715181417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,6 +47,25 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9007304837762414911}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ab1ac963165f7499cc649f183443be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  movementForce: 3
+  enemyAnimator: {fileID: 2064213531525391621}
+  playerTransform: {fileID: 0}
+  runDelay: 2
+  minMovRange: -50
+  maxMovRange: 50
+--- !u!114 &2836233613352635537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007304837762414911}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb11d090f4b19ff4b9aefc501fac942c, type: 3}
   m_Name: 

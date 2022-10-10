@@ -33,7 +33,7 @@ public class EnemyCollider : MonoBehaviour
     private void DamageEnemy() {
         Debug.Log("Lower Enemy HP");
         executingAction = false;
-        GetComponent<EnemyMove>().DamageMovement();
+        GetComponent<EnemyGeneralMovement>().DamageMovement();
         GetComponent<EnemyData>().LowerHP(1);
     }
 }
