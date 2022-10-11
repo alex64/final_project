@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    private void Start() {
+        PlayerData.onPlayerDead += ShowGameOverScene;
+        PlayerCollision.onVictory += ShowVictoryScene;
+    }
+
     public void OnClickMainMenu(){
         SceneManager.LoadScene("MainMenu");
     }
@@ -16,5 +21,13 @@ public class UIManager : MonoBehaviour
 
     public void OnClickCredits(){
         SceneManager.LoadScene("Credits");
+    }
+
+    public void ShowGameOverScene(){
+        SceneManager.LoadScene("GameOver");
+    }
+
+    public void ShowVictoryScene(){
+        SceneManager.LoadScene("Victory");
     }
 }

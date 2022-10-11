@@ -16,6 +16,7 @@ public class PlayerCollision : MonoBehaviour
     public static event Action<GeneralMagicElement> onCollision;
     public static event Action onExit;
     public static event Action onDamage;
+    public static event Action onVictory;
 
     private bool isDamaged = false;
 
@@ -46,6 +47,11 @@ public class PlayerCollision : MonoBehaviour
         {
             PlayerDamaged();
         }
+        if(other.gameObject.CompareTag("WaterStone"))
+        {
+            VictoryScene();
+        }
+
     }
 
     private void OnCollisionStay(Collision other) {
@@ -86,5 +92,9 @@ public class PlayerCollision : MonoBehaviour
     private void RecoileDamage()
     {
         isDamaged = false;
+    }
+
+    private void VictoryScene(){
+        onVictory?.Invoke();
     }
 }

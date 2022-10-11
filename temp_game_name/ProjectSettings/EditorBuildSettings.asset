@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Subnivel03.unity
     guid: 2675cbe9fd13c85489ac7b2cd958c5f9
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 81fc915f66702ae4fbbc2a49451a5a73
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: b4790d302e022a94c9fd96fd0adfe2f0
   m_configObjects: {}

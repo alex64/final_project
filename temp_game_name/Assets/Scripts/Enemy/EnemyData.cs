@@ -15,7 +15,7 @@ public class EnemyData : MonoBehaviour
 
     public float RayDistance { get => rayDistance; set => rayDistance = value; }
 
-    public void LowerHP(int damage) {
+    public virtual void LowerHP(int damage) {
         Hp -= damage;
         if(Hp == 0) {
             Destroy(gameObject);
