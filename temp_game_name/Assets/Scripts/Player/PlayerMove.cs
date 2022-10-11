@@ -12,6 +12,7 @@ public class PlayerMove : PlayerDefault
     // Start is called before the first frame update
     void Start()
     {
+        PlayerCollision.onDamage += DamageAnimation;
         movementList.Add(KeyCode.W, Vector3.forward);
         movementList.Add(KeyCode.A, Vector3.left);
         movementList.Add(KeyCode.S, Vector3.back);
@@ -72,5 +73,11 @@ public class PlayerMove : PlayerDefault
     private bool IsAnimation(string animName)
     {
         return PlayerAnimation.GetCurrentAnimatorStateInfo(0).IsName(animName);
+    }
+
+    private void DamageAnimation()
+    {
+        PlayerAnimation.SetTrigger("Damaged_Trigger");
+        
     }
 }
