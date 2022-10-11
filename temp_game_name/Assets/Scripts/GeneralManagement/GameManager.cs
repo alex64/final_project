@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static int playerHP;
-    public static int PlayerHP { get => playerHP; set => playerHP = value; }
+    /*private static int playerHP;
+    public static int PlayerHP { get => playerHP; set => playerHP = value; }*/
 
 
     public static GameManager instance;
@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void setPlayerHP(int hp)
+    /*public static void setPlayerHP(int hp)
     {
         playerHP = hp;
         Debug.Log(playerHP);
-    }
+    }*/
 }

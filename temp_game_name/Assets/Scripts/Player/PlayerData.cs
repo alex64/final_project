@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerData : MonoBehaviour
 {
@@ -20,8 +21,10 @@ public class PlayerData : MonoBehaviour
     private bool isAttacking = false;
     public bool IsAttacking { get => isAttacking; set => isAttacking = value; }
 
+    public static event Action onPlayerDead;
+
     private void Start() {
-        GameManager.setPlayerHP(hp);
+        //GameManager.setPlayerHP(hp);
         PlayerAttack.onAttack += PlayerIsAttacking;
         PlayerCollision.onDamage += LowerHP;
     }
@@ -34,12 +37,16 @@ public class PlayerData : MonoBehaviour
 
     private void LowerHP()
     {
-        Hp--;
-        //HUDManager.instance.DecreaseLife(Hp);
-        Debug.Log("Player Life: " + Hp);
-        if(Hp == 0) 
+        if(Hp > 0)
         {
-
-        }
+            Hp--;
+            //HUDManager.instance.DecreaseLife(Hp);
+            Debug.Log("Player Life: " + Hp);
+            if(Hp == 0) 
+            {
+                Debug.Log("Player Dead");
+                onPlayerDead?.Invoke();
+            }
+        } 
     }
 }
