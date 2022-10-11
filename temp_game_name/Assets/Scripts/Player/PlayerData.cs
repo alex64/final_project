@@ -40,7 +40,7 @@ public class PlayerData : MonoBehaviour
         if(Hp > 0)
         {
             Hp--;
-            //HUDManager.instance.DecreaseLife(Hp);
+            HUDManager.instance.DecreaseLife(Hp);
             Debug.Log("Player Life: " + Hp);
             if(Hp == 0) 
             {

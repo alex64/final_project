@@ -39,6 +39,10 @@ public class PlayerCollision : MonoBehaviour
             //other.gameObject.GetComponent<ChestManager>().CreateFinishMessage();
             //Destroy(other.gameObject);
         }
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            PlayerDamaged();
+        }
     }
 
     private void OnCollisionStay(Collision other) {
@@ -62,10 +66,15 @@ public class PlayerCollision : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Fire") && !isDamaged)
         {
-            isDamaged = true;
-            onDamage?.Invoke();
-            Invoke("RecoileDamage", damageTime);
+            PlayerDamaged();
         }
+    }
+
+    private void PlayerDamaged()
+    {
+        isDamaged = true;
+        onDamage?.Invoke();
+        Invoke("RecoileDamage", damageTime);
     }
 
     private void RecoileDamage()

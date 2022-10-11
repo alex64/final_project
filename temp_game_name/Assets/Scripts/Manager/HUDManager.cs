@@ -26,7 +26,7 @@ public class HUDManager : MonoBehaviour
         
     }
 
-    private void DecreaseLife(int heartsPlace){
+    public void DecreaseLife(int heartsPlace){
         hearts[heartsPlace].gameObject.SetActive(false);
     }
 }
