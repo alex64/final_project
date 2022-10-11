@@ -28,6 +28,7 @@ public class TotemTrigger : MonoBehaviour
                 switch(totemType){
                     case TotemType.Rain:
                         //Set Ligt Blue
+                        //treeManager.Instance
                         if(treeManager.IsDestroyed || !treeManager.IsGrown) 
                         {
                             treeManager.GrowTree();

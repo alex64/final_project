@@ -10,7 +10,7 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
-        BridgeExitManager.exitLevel+= LoadNextLevel;
+        ExitLevelManager.exitLevel+= LoadNextLevel;
     }
 
     private void LoadNextLevel(){

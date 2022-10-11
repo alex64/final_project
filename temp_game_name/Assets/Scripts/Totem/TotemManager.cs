@@ -92,7 +92,6 @@ public class TotemManager : MonoBehaviour
 
     private void WaterTotemAction() 
     {
-        Debug.Log("Water Totem Action");
         if(treeManager != null) {
             if(treeManager.IsDestroyed || !treeManager.IsGrown) 
             {

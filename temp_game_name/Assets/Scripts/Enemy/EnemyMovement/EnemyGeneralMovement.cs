@@ -132,7 +132,7 @@ public class EnemyGeneralMovement : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Player"))
                 {
-                    Debug.Log("Spoted player");
+                    //Debug.Log("Spoted player");
                     SpotPlayerAction();
                 }
             }

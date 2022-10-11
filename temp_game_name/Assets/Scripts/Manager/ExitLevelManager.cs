@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class BridgeExitManager : MonoBehaviour
+public class ExitLevelManager : MonoBehaviour
 {
     public static event Action exitLevel;
 

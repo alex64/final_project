@@ -59,7 +59,11 @@ public class PlayerMagicAction : PlayerDefault
             {
                 if(magicEnvElement is TreeManager) {
                     TreeManager treeManager = (TreeManager)magicEnvElement;
-                    if(treeManager.HasLightingRod && treeManager.IsGrown) 
+                    //if(treeManager.HasLightingRod && treeManager.IsGrown)
+                    Debug.Log("playerData.HasMagicItem: " + playerData.HasMagicItem);
+                    Debug.Log("treeManager.HasLightingRod: " + treeManager.HasLightingRod);
+                    Debug.Log("treeManager.IsGrown: " + treeManager.IsGrown);
+                    if(playerData.HasMagicItem && !treeManager.HasLightingRod && treeManager.IsGrown)
                     {
                         Debug.Log("Adding Ligthing Rod");
                         treeManager.AddLightingRod();

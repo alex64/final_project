@@ -31,6 +31,16 @@ public class TreeManager : GeneralMagicElement
     public bool IsDestroyed { get => isDestroyed; set => isDestroyed = value; }
     public bool IsBridgeCreated { get => isBridgeCreated; set => isBridgeCreated = value; }
     public bool HasLightingRod { get => hasLightingRod; set => hasLightingRod = value; }
+    public TreeManager TreeManagerInstance { get => treeManagerInstance; set => treeManagerInstance = value; }
+
+    private TreeManager treeManagerInstance;
+
+
+    public override void Start()
+    {
+        base.Start();
+        treeManagerInstance = this;
+    }
 
     private void Update() {
         if(isTreeRotation) 
@@ -65,6 +75,7 @@ public class TreeManager : GeneralMagicElement
         transform.position += new Vector3(0f, 0.7f, 0f);
         transform.localScale = transform.localScale * 2;
         isGrown = true;
+        Debug.Log("isGrown:" + true);
         isDestroyed = false;
     }
 

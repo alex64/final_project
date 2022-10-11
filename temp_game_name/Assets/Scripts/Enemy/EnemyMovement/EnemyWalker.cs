@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyWalker : EnemyGeneralMovement
 {
-    [SerializeField]
+    /*[SerializeField]
     [Range(1f, 10f)]
-    private float runDelay = 2f;
+    private float runDelay = 2f;*/
 
     [SerializeField]
     [Range(-50f, 0)]
@@ -58,7 +58,7 @@ public class EnemyWalker : EnemyGeneralMovement
         if(!IsMoving) 
         {
             moveDirection = randomDirection();
-            Debug.Log(moveDirection);
+            //Debug.Log(moveDirection);
             IsMoving = true;
             IsRotating = true;
         }

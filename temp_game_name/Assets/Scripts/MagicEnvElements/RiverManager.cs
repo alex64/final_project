@@ -13,13 +13,9 @@ public class RiverManager : GeneralMagicElement
 
     public void setRiverActive(bool activate)
     {
-        /*if(activate) 
-        {
-            //IF possible, animation for evaporation
-        }*/
         gameObject.SetActive(activate);
         if(!activate){
-            riverSteam.SetActive(activate);
+            riverSteam.SetActive(!activate);
         }
     }
 

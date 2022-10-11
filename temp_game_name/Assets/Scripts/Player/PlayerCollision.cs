@@ -8,8 +8,11 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private float damageTime = 3f;
 
+    [SerializeField]
+    private GeneralMagicElement manager;
+
     private PlayerData playerData;
-    private TreeManager treeManager;
+    //private TreeManager treeManager;
     public static event Action<GeneralMagicElement> onCollision;
     public static event Action onExit;
     public static event Action onDamage;
@@ -46,10 +49,13 @@ public class PlayerCollision : MonoBehaviour
     }
 
     private void OnCollisionStay(Collision other) {
-        if(other.gameObject.CompareTag("FallingTree") 
-                || other.gameObject.CompareTag("RiverSide"))
+        if(other.gameObject.CompareTag("FallingTree"))
         {
             //Debug.Log("Collision stay with: " + other.gameObject.tag);
+            onCollision?.Invoke(manager);
+        }
+        if(other.gameObject.CompareTag("RiverSide"))
+        {
             onCollision?.Invoke(other.gameObject.GetComponent<GeneralMagicElement>().Instance);
         }
     }

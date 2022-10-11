@@ -14,6 +14,6 @@ public class WaterfallManager : GeneralMagicElement
     public void setWaterfallActive(bool activate)
     {
         gameObject.SetActive(activate);
-        iceWaterfall.SetActive(activate);
+        iceWaterfall.SetActive(!activate);
     }
 }

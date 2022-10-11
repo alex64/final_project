@@ -22,7 +22,10 @@ public class PlayerAudioManager : MonoBehaviour
     }
 
     private void PlayerAttackAudio(bool attack){
-        PlayAudio(attackAudio, attackVolumen);
+        if(audioPlayer != null)
+        {
+            PlayAudio(attackAudio, attackVolumen);
+        }
     }
 
     private void PlayAudio(AudioClip audioClip, float attackVolumen){

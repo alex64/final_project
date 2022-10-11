@@ -8,7 +8,7 @@ public class GeneralMagicElement : MonoBehaviour
 
     public GeneralMagicElement Instance { get => instance; set => instance = value; }
 
-    private void Start() {
+    public virtual void Start() {
         Instance = this;
     }
 }

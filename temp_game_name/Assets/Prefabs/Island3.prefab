@@ -3261,7 +3261,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9067630255382165061, guid: ed5912132bbdce74a9466afb1324969d, type: 3}
   m_PrefabInstance: {fileID: 5371620190883153839}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8616850896014402589
+--- !u!114 &7865407580368669501
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3270,7 +3270,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3989456678474707434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a86a2f6da4205274c82b05e1df41c5e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b0953aba8a2e214c83ae3a2416ba6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &3989456678474804682 stripped
@@ -3435,7 +3435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8975724599411159799, guid: a8bbd7d2c3bac5e4aabcfba19f95c97c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.76
+      value: 1.26
       objectReference: {fileID: 0}
     - target: {fileID: 8975724599411159799, guid: a8bbd7d2c3bac5e4aabcfba19f95c97c, type: 3}
       propertyPath: m_LocalRotation.w
