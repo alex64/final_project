@@ -26,6 +26,14 @@ public class HUDManager : MonoBehaviour
         
     }
 
+    public void ResetLife()
+    {
+        foreach(Image heart in hearts)
+        {
+            heart.gameObject.SetActive(true);
+        }
+    }
+
     public void DecreaseLife(int heartsPlace){
         hearts[heartsPlace].gameObject.SetActive(false);
     }

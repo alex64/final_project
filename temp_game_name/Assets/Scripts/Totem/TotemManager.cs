@@ -41,7 +41,7 @@ public class TotemManager : MonoBehaviour
         if(other.gameObject.CompareTag("Player")){
             time += Time.deltaTime;
             if(time >= timeInTotem){
-                //ToggleTotemLight(false);
+                ToggleTotemLight(false);
                 switch(totemType)
                 {
                     case TotemType.Rain:
@@ -63,14 +63,17 @@ public class TotemManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         if(other.gameObject.CompareTag("Player")){
-            //ToggleTotemLight(true);
+            ToggleTotemLight(true);
         }
     }
 
     private void ToggleTotemLight(bool sunLightActive)
     {
-        totemLight.SetActive(!sunLightActive);
-        sunLight.SetActive(sunLightActive);
+        if(totemLight != null && sunLight != null)
+        {
+            totemLight.SetActive(!sunLightActive);
+            sunLight.SetActive(sunLightActive);
+        }
     }
 
     private void AssignManager(GeneralMagicElement magicEnvElement)

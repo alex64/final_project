@@ -24,10 +24,12 @@ public class UIManager : MonoBehaviour
     }
 
     public void ShowGameOverScene(){
+        HUDManager.instance.ResetLife();
         SceneManager.LoadScene("GameOver");
     }
 
     public void ShowVictoryScene(){
+        HUDManager.instance.ResetLife();
         SceneManager.LoadScene("Victory");
     }
 }
