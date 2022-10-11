@@ -500,8 +500,8 @@ Transform:
   - {fileID: 2889110114964050537}
   - {fileID: 8318837483959702103}
   - {fileID: 2836555722910997813}
-  - {fileID: 3989456678474804682}
   - {fileID: 928170441710106279}
+  - {fileID: 3989456678474804682}
   m_Father: {fileID: 1009913727667649711}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3200,11 +3200,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9067630255382165061, guid: ed5912132bbdce74a9466afb1324969d, type: 3}
       propertyPath: m_Name
-      value: Rock3 (5)
+      value: RockExit
       objectReference: {fileID: 0}
     - target: {fileID: 9067630255382260325, guid: ed5912132bbdce74a9466afb1324969d, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9067630255382260325, guid: ed5912132bbdce74a9466afb1324969d, type: 3}
       propertyPath: m_LocalScale.x
@@ -3256,6 +3256,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed5912132bbdce74a9466afb1324969d, type: 3}
+--- !u!1 &3989456678474707434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9067630255382165061, guid: ed5912132bbdce74a9466afb1324969d, type: 3}
+  m_PrefabInstance: {fileID: 5371620190883153839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8616850896014402589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989456678474707434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86a2f6da4205274c82b05e1df41c5e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3989456678474804682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9067630255382260325, guid: ed5912132bbdce74a9466afb1324969d, type: 3}
@@ -4355,7 +4372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9067630255382260325, guid: ed5912132bbdce74a9466afb1324969d, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9067630255382260325, guid: ed5912132bbdce74a9466afb1324969d, type: 3}
       propertyPath: m_LocalScale.x
